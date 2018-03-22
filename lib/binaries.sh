@@ -13,9 +13,7 @@ install_yarn() {
 
   if needs_resolution "$version"; then
     echo "Resolving yarn version ${version:-(latest)} via semver.io..."
-    # local version=$(curl --silent --get --retry 5 --retry-max-time 15 --data-urlencode "range=${version}" https://semver.herokuapp.com/yarn/resolve)
-    # Tmp fix https://github.com/yarnpkg/yarn/releases/
-    local version=1.5.1
+    local version=$(curl --silent --get --retry 5 --retry-max-time 15 --data-urlencode "range=${version}" https://semver.herokuapp.com/yarn/resolve)
   fi
 
   echo "Downloading and installing yarn ($version)..."
